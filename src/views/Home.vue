@@ -1,18 +1,120 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>{{ message }}</h1>
+    <div id="add_movie">
+    <button v-on:click="createMovie()">Add a Movie to the List!</button>
+      <div id="inp">
+      <input type="text" placeholder="Movie Title" v-model="newMovieTitle" />
+      <input type="text" placeholder="Year" v-model="newMovieYear" />
+      <input type="text" placeholder="Director" v-model="newMovieDirector" />
+      <input type="text" placeholder="Genre" v-model="newMovieGenre" />
+      </div>
+    </div>
+    <div id="movieList" v-for="movie in movies" v-bind:key="movie.id">
+      <h2>{{ movie.title }}</h2>
+      <p>{{ movie.year }} * Directed By: {{ movie.director }} * Genre {{ movie.genre }}</p>
+    </div>
   </div>
 </template>
 
+
+<style>
+
+
+.home {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background: linear-gradient(rgb(68, 68, 68), #fff);
+}
+
+#add_movie {
+  display: inline-flex;
+}
+
+#add_movie button {
+  margin-right: 5%;
+  margin-top: 7%;
+  margin-bottom: 7%;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(154,90,228,0.18333333333333335) 35%, rgba(0,212,255,1) 100%);
+  box-shadow: 1px 2px 5px black;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+#add_movie #inp {
+  display: flex;
+  flex-direction: column;
+}
+
+::placeholder {
+  color: rgba(212, 146, 250, 0.699);
+  font-size: 1em;
+}
+
+
+h1 {
+  font-family: 'Exo 2', sans-serif;
+  color: rgb(235, 5, 235);
+  text-shadow: 1px 2px 3px black;
+}
+
+#movieList {
+  font-family: 'Exo 2', sans-serif;
+  color: rgb(133, 133, 247);
+  text-shadow: 1px 2px 3px black;
+}
+
+#movieList p {
+  text-shadow: 1px 1px 1px black;
+}
+</style>
+
+
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import axios from "axios";
 
 export default {
-  name: "Home",
-  components: {
-    HelloWorld,
+  data: function() {
+    return {
+      message: "It's MOVIE time",
+      movies: [],
+      newMovieTitle: "",
+      newMovieYear: "",
+      // newMoviePlot: "",
+      newMovieDirector: "",
+      newMovieGenre: "",
+    };
+  },
+  mounted: function () {
+    this.indexMovies();
+  },
+  methods: {
+    indexMovies: function () {
+      axios.get("/api/movies").then((response) => {
+        console.log(response.data);
+        this.movies = response.data;
+      });
+    },
+    createMovie: function () {
+      console.log("Creating a recipe!");
+      var params = {
+        title: this.newMovieTitle,
+        year: this.newMovieYear,
+        director: this.newMovieDirector,
+        genre: this.newMovieGenre,
+      };
+      axios
+        .post("/api/movies", params)
+        .then((response) => {
+          console.log("sucessfully created movie!", response.data);
+        this.movies.push(response.data);
+      })
+        .catch((error) => {
+          console.log(error.response.data.errors);
+          this.errors = error.response.data.errors;
+        });
+    },
   },
 };
 </script>
