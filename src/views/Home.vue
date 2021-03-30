@@ -124,12 +124,12 @@ export default {
       });
     },
     createMovie: function () {
-      console.log("Creating a recipe!");
+      console.log("Creating a movie!");
       var params = {
         title: this.newMovieTitle,
         year: this.newMovieYear,
         director: this.newMovieDirector,
-        genre: this.newMovieGenre,
+        plot: this.newMoviePlot,
       };
       axios
         .post("/api/movies", params)
