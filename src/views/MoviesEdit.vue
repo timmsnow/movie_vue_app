@@ -2,6 +2,7 @@
   <div class="movies-edit">
     <form v-on:submit.prevent="updateMovie(movie)">
       <h1>UPDATE MOVIE</h1>
+      
       <ul>
         <li class="text-danger" v-for="error in errors" v-bind:key="error">
           {{ error }}
@@ -33,6 +34,7 @@
 </template>
 
 <style>
+
 .movies-edit {
   padding-top: 5%;
   padding-bottom: 5%;

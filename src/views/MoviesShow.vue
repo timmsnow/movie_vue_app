@@ -1,5 +1,20 @@
 <template>
   <div class="movies-show">
+    <div class="card" style="width: 18rem">
+      <!-- <img src="..." class="card-img-top" alt="..."> -->
+      <div class="card-body">
+        <h2 class="card-title">{{ movie.title }}</h2>
+        <p style="font-weight: bold" class="card-text">
+          {{ movie.year }} • {{ movie.director }} • "{{ movie.genre[0] }}"
+        </p>
+        <p>{{ movie.plot }}</p>
+        <router-link v-bind:to="`/movies/${movie.id}/edit`">Update That Movie</router-link>
+        <br />
+        <button v-on:click="destroyMovie(movie)">Delete Movie</button>
+      </div>
+    </div>
+
+    <!-- 
     <div class="container">
       <h2>{{ movie.title }}</h2>
       <p style="font-weight: bold">{{ movie.year }} • {{ movie.director }} • "{{ movie.genre[0] }}"</p>
@@ -7,19 +22,22 @@
     </div>
     <router-link v-bind:to="`/movies/${movie.id}/edit`">Update That Movie</router-link>
     <br />
-    <button v-on:click="destroyMovie(movie)">Delete Movie</button>
+    <button v-on:click="destroyMovie(movie)">Delete Movie</button> -->
   </div>
 </template>
 
 <style>
 .movies-show {
+  display: flex;
+  justify-content: center;
   padding-top: 5%;
   padding-bottom: 5%;
   background: linear-gradient(#fff, #ecc8fa);
 }
 
+
 button {
-  margin-top: 5%;
+  margin-top: 5% !important;
   margin-bottom: 5%;
   background: rgb(2, 0, 36);
   background: purple;
