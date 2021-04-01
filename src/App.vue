@@ -10,6 +10,8 @@
       <router-link to="/login">Log In</router-link>
       |
       <router-link to="/logout">Log Out</router-link>
+       |
+      <router-link to="/movies">All Movies</router-link>
     </div>
     <router-view />
   </div>

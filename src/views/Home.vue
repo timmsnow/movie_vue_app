@@ -44,11 +44,11 @@
   </div>
 </template>
 
-<style>
+ <style>
 .home {
   padding-top: 5%;
   padding-bottom: 5%;
-  background: linear-gradient(rgb(68, 68, 68), #fff);
+  background: linear-gradient(#fff, #ecc8fa);
 }
 
 #add_movie {
