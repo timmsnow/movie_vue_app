@@ -3,11 +3,11 @@
   <div class="home">
     <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <h1 class="display-4">{{ message }}</h1>
+    <p class="lead">Navigate to ALL MOVIES to get started</p>
   </div>
 </div>
-    <h1>{{ message }}</h1>
+    <!-- <h1>{{ message }}</h1>
 
     <div id="add_movie">
       <button v-on:click="createMovie()">Add a Movie to the List!</button>
@@ -47,7 +47,7 @@
         <button v-on:click="destroyMovie(currentMovie)">Delete ME</button>
         <button>Close</button>
       </form>
-    </dialog>
+    </dialog> -->
   </div>
 </template>
 

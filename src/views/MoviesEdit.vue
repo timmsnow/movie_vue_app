@@ -1,40 +1,41 @@
 <template>
   <div class="movies-edit">
-    <form v-on:submit.prevent="updateMovie(movie)">
+    <div class="container">
       <h1>UPDATE MOVIE</h1>
-      
       <ul>
         <li class="text-danger" v-for="error in errors" v-bind:key="error">
           {{ error }}
         </li>
       </ul>
-      <div class="form-group">
-        <label>Title:</label>
-        <input type="text" class="form-control" v-model="movie.title" />
+
+      <div class="row justify-content-md-center">
+        <form v-on:submit.prevent="updateMovie(movie)">
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Title:</label>
+              <input type="text" class="form-control" v-model="movie.title" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Year:</label>
+            <input type="text" class="form-control" v-model="movie.year" />
+          </div>
+          <div class="form-group">
+            <label>Director:</label>
+            <input type="text" class="form-control" v-model="movie.director" />
+          </div>
+          <div class="form-group">
+            <label>Plot:</label>
+            <input type="text" class="form-control" v-model="movie.plot" />
+          </div>
+          <input type="submit" class="btn btn-primary" value="Submit" />
+        </form>
       </div>
-      <div class="form-group">
-        <label>Year:</label>
-        <input type="text" class="form-control" v-model="movie.year" />
-      </div>
-      <div class="form-group">
-        <label>Director:</label>
-        <input type="text" class="form-control" v-model="movie.director" />
-      </div>
-      <div class="form-group">
-        <label>Plot:</label>
-        <input type="text" class="form-control" v-model="movie.plot" />
-      </div>
-      <div class="form-group">
-        <label>Genre:</label>
-        <input type="text" class="form-control" v-model="movie.genre" />
-      </div>
-      <input type="submit" class="btn btn-primary" value="Submit" />
-    </form>
+    </div>
   </div>
 </template>
 
 <style>
-
 .movies-edit {
   padding-top: 5%;
   padding-bottom: 5%;
