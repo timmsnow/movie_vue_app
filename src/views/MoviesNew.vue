@@ -25,6 +25,7 @@
         <div class="form-group">
           <label>Plot:</label>
           <input type="text" class="form-control" v-model="plot" />
+        <small v-if="plot.length > 100" class="text-danger">That's too many words! Shut up already!</small>
         </div>
         <input type="submit" class="btn btn-primary" value="Submit" />
       </form>
@@ -84,8 +85,11 @@ h1 {
   text-shadow: 1px 1px 1px black;
   color: #ffffff;
 }
-</style>
 
+.text-danger {
+  font-weight: bold;
+}
+</style>
 <script>
 import axios from "axios";
 

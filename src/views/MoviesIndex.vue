@@ -6,6 +6,20 @@
         <p class="lead">Welcome to the movie List... scroll down to see MOVIES</p>
         <p>or</p>
         <router-link to="/movies/new">Add a New Movie</router-link>
+        <p>OR</p>
+
+        <!-- unclear how to use filterBy method -->
+        Search by name:
+        <input v-model="titleFilter" list="titles" />
+        <datalist id="titles">
+          <option v-for="movie in movies" v-bind:key="movie.id">{{ movie.title }}</option>
+        </datalist>
+        <p>OR</p>
+
+        <!-- unclear how to use sortBy method? -->
+        <div>
+          <button>Sort Alphabetically</button>
+        </div>
       </div>
     </div>
 
@@ -64,11 +78,14 @@ h1 {
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function () {
     return {
       movies: [],
+      titleFilter: "",
     };
   },
   created: function () {

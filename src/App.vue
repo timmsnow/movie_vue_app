@@ -16,16 +16,27 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <router-link to="/signup">
-          <li class="nav-item active">
-            <a class="nav-link" href="">Sign Up</a>
-          </li>
-          </router-link>
-          <router-link to="/login">
-          <li class="nav-item">
-            <a class="nav-link" href="">Log In</a>
-          </li>
-          </router-link>
+          <span v-if="ifLoggedIn()">
+            <router-link to="/logout">
+              <li class="nav-item">
+                <a class="nav-link disabled" href="" tabindex="-1" aria-disabled="true">Log Out</a>
+              </li>
+            </router-link>
+          </span>
+          <span v-if="!ifLoggedIn()">
+            <router-link to="/signup">
+              <li class="nav-item active">
+                <a class="nav-link" href="">Sign Up</a>
+              </li>
+            </router-link>
+            </span>
+          <span v-if="!ifLoggedIn()">
+            <router-link to="/login">
+              <li class="nav-item">
+                <a class="nav-link" href="">Log In</a>
+              </li>
+            </router-link>
+          </span>
           <router-link to="/movies">
             <li class="nav-item">
               <a class="nav-link" href="">
@@ -53,11 +64,6 @@
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </li> -->
-          <router-link to="/logout">
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Log Out</a>
-          </li>
-          </router-link>
         </ul>
         <!-- <form class="form-inline my-2 my-lg-0">
           <span>
@@ -95,7 +101,6 @@ nav {
   padding: 30px;
 }
 
-
 nav a {
   font-weight: bold;
   color: #2c3e50;
@@ -113,3 +118,16 @@ nav a {
   background-color: #b414f3 !important;
 }
 </style>
+
+<script>
+export default {
+  methods: {
+    ifLoggedIn: function () {
+      return localStorage.getItem("jwt");
+    },
+    // getUserId: function () {
+    //   return localStorage.getItem("user_id");
+    // },
+  },
+};
+</script>
