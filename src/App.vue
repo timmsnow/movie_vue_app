@@ -18,17 +18,17 @@
         <ul class="navbar-nav mr-auto">
           <router-link to="/signup">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Sign Up</a>
+            <a class="nav-link" href="">Sign Up</a>
           </li>
           </router-link>
           <router-link to="/login">
           <li class="nav-item">
-            <a class="nav-link" href="#">Log In</a>
+            <a class="nav-link" href="">Log In</a>
           </li>
           </router-link>
           <router-link to="/movies">
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="">
                 All Movies
                 <span class="sr-only">(current)</span>
               </a>
