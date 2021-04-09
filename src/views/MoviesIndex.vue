@@ -4,13 +4,16 @@
       <div class="container">
         <h1 class="display-4">It's all about the MOVIES</h1>
         <p class="lead">Welcome to the movie List... scroll down to see MOVIES</p>
-        <p>or</p>
-        <router-link to="/movies/new">Add a New Movie</router-link>
         <p>OR</p>
 
         <!-- unclear how to use filterBy method -->
         Search by name:
         <input v-model="titleFilter" list="titles" />
+        <select>
+          <option>Nowhere</option>
+          <option>atonement</option>
+          <option>blah blah</option>
+        </select>
         <datalist id="titles">
           <option v-for="movie in movies" v-bind:key="movie.id">{{ movie.title }}</option>
         </datalist>
@@ -22,6 +25,36 @@
         </div>
       </div>
     </div>
+
+    <form>
+      <fieldset>
+        <legend>Which are your favorite movie genres?</legend>
+        <p>(select all that apply)</p>
+        <ul>
+          <li>
+            <input type="checkbox" id="check" name="movie-genre" value="horror" />
+            <label for="horror">Horror</label>
+          </li>
+          <li>
+            <input type="checkbox" id="check" name="movie-genre" value="sci-fi" />
+            <label for="Sci-fi">Sci-fi</label>
+          </li>
+          <li>
+            <input type="checkbox" id="check" name="movie-genre" value="period-dramas" />
+            <label for="period-dramas">Period Drama</label>
+          </li>
+          <li>
+            <input type="checkbox" id="check" name="movie-genre" value="period-dramas" />
+            <label for="documentaries">Documentary</label>
+          </li>
+          <li>
+            <input type="checkbox" id="check" name="movie-genre" value="comedy" />
+            <label for="comedy">Comedy</label>
+          </li>
+          <button type="reset" name="movie-genre">RESET</button>
+        </ul>
+      </fieldset>
+    </form>
 
     <div class="container">
       <div class="row">
@@ -73,6 +106,20 @@ h1 {
 .card {
   margin-bottom: 2%;
   box-shadow: 1px 2px 5px silver, 1px 1px black;
+}
+
+li {
+  text-align: left;
+  list-style: none;
+}
+
+#check {
+  margin-right: 5%;
+}
+
+ul button {
+  margin-top: none;
+  margin-bottom: 10%;
 }
 </style>
 

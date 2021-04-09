@@ -29,7 +29,7 @@
                 <a class="nav-link" href="">Sign Up</a>
               </li>
             </router-link>
-            </span>
+          </span>
           <span v-if="!ifLoggedIn()">
             <router-link to="/login">
               <li class="nav-item">
@@ -45,6 +45,15 @@
               </a>
             </li>
           </router-link>
+          <router-link to="/movies/new">
+            <li class="nav-item">
+              <a class="nav-link" href="">
+                Add a New Movie
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </router-link>
+
           <!-- <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"

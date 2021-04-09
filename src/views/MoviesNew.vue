@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
-
     <div class="movies-new">
       <form v-on:submit.prevent="createMovie()">
         <h1>New Movie</h1>
@@ -24,8 +22,8 @@
         </div>
         <div class="form-group">
           <label>Plot:</label>
-          <input type="text" class="form-control" v-model="plot" />
-        <small v-if="plot.length > 100" class="text-danger">That's too many words! Shut up already!</small>
+          <textarea type="text" class="form-control" v-model="plot" id="plot-text" />
+          <small v-if="plot.length > 100" class="text-danger">That's too many words! Shut up already!</small>
         </div>
         <input type="submit" class="btn btn-primary" value="Submit" />
       </form>
@@ -38,6 +36,11 @@
   padding-top: 5%;
   padding-bottom: 5%;
   background: linear-gradient(rgb(68, 68, 68), #fff);
+}
+
+.movies-new {
+  display: flex;
+  justify-content: center;
 }
 
 #add_movie {
@@ -88,6 +91,11 @@ h1 {
 
 .text-danger {
   font-weight: bold;
+}
+
+#plot-text {
+  width: 200px;
+  height: 150px;
 }
 </style>
 <script>
